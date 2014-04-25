@@ -1065,7 +1065,7 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 535 * COIN;
+    int64 nSubsidy = 1.044921875 * COIN;
 
     if (nHeight == 1)
     {
@@ -1078,9 +1078,68 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
        nSubsidy = 1 * COIN;
        return nSubsidy + nFees;
     }
+    
+    else if (nHeight <= 10000)
+    {
+       nSubsidy = 535 * COIN;
+       return nSubsidy + nFees;
+    }
+    
+    else if (nHeight <= 30000)
+    {
+       nSubsidy = 267.5 * COIN;
+       return nSubsidy + nFees;
+    }
+    
+    else if (nHeight <= 70000)
+    {
+       nSubsidy = 133.75 * COIN;
+       return nSubsidy + nFees;
+    }
+    
+    else if (nHeight <= 150000)
+    {
+       nSubsidy = 66.875 * COIN;
+       return nSubsidy + nFees;
+    }
+    
+    else if (nHeight <= 310000)
+    {
+       nSubsidy = 33.4375 * COIN;
+       return nSubsidy + nFees;
+    }
+    
+    else if (nHeight <= 630000)
+    {
+       nSubsidy = 16.71875 * COIN;
+       return nSubsidy + nFees;
+    }
+    
+    else if (nHeight <= 1270000)
+    {
+       nSubsidy = 8.359375 * COIN;
+       return nSubsidy + nFees;
+    }
+    
+    else if (nHeight <= 2550000)
+    {
+       nSubsidy = 4.1796875 * COIN;
+       return nSubsidy + nFees;
+    }
 
-    // Subsidy is cut in half every 50000 blocks
-    nSubsidy >>= (nHeight / 50000); // JuggaloCoin: 50,000
+    else if (nHeight <= 5110000)
+    {
+       nSubsidy = 2.08984375 * COIN;
+       return nSubsidy + nFees;
+    }
+    
+    else if (nHeight <= 10230000)
+    {
+       nSubsidy = 1.044921875 * COIN;
+       return nSubsidy + nFees;
+    }
+
+//    nSubsidy >>= (nHeight / 50000); // Old Halving
 
     return nSubsidy + nFees;
 }
